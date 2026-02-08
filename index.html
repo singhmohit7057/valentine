@@ -4,6 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Be My Valentine? 💕</title>
+<!-- WhatsApp / Social Preview -->
+<meta property="og:title" content="Will You Be My Valentine? 💕">
+<meta property="og:description" content="I made something special just for you ❤️">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://singhmohit7057.github.io/valentine/">
+<meta property="og:image" content="https://singhmohit7057.github.io/valentine/Pic1.jpeg">
+<meta name="twitter:card" content="summary_large_image">
+
     <link href="https://fonts.googleapis.com/css2?family=Righteous&family=DM+Sans:wght@400;500;700&family=Fredoka:wght@400;600&display=swap" rel="stylesheet">
     <style>
         * {
@@ -604,6 +612,57 @@ body.lock-scroll {
                 padding: 30px 20px;
             }
         }
+#musicBadge.player {
+    position: fixed;
+    bottom: 18px;
+    right: 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(6px);
+    padding: 10px 14px;
+    border-radius: 22px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.4s ease;
+    z-index: 9999;
+}
+
+#musicBadge.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+#playPauseBtn {
+    border: none;
+    background: var(--soft-red);
+    color: white;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+#playPauseBtn:hover {
+    background: var(--coral);
+}
+
+#musicBadge .now-playing {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text);
+    white-space: nowrap;
+}
+
+#progressSlider {
+    width: 90px;
+    accent-color: var(--soft-red);
+    cursor: pointer;
+}
+
     </style>
 </head>
 <body>
@@ -849,6 +908,9 @@ body.lock-scroll {
 // 🔒 Lock scroll on page load
 document.body.classList.add('lock-scroll');
 
+let music, playPauseBtn;
+
+
         // Floating hearts background
         function createFloatingHearts() {
             const container = document.getElementById('bgHearts');
@@ -920,7 +982,16 @@ document.body.classList.add('lock-scroll');
         });
 
         // YES button clicked
-        yesBtn.addEventListener('click', () => {
+       yesBtn.addEventListener('click', () => {
+
+const badge = document.getElementById('musicBadge');
+
+    
+  music.play().then(() => {
+    badge.classList.add('show');
+    playPauseBtn.textContent = '⏸';
+}).catch(() => {});
+
     // 🔓 Unlock scrolling
     document.body.classList.remove('lock-scroll');
 
@@ -1060,6 +1131,53 @@ document.body.classList.add('lock-scroll');
                 }, 300);
             });
         });
+
+document.addEventListener('DOMContentLoaded', () => {
+    music = document.getElementById('bgMusic');
+    music.volume = 0.25;
+    playPauseBtn = document.getElementById('playPauseBtn');
+    const progressSlider = document.getElementById('progressSlider');
+
+    if (!music || !playPauseBtn || !progressSlider) return;
+
+    // Play / Pause
+    playPauseBtn.addEventListener('click', () => {
+        if (music.paused) {
+            music.play();
+            playPauseBtn.textContent = '⏸';
+        } else {
+            music.pause();
+            playPauseBtn.textContent = '▶️';
+        }
+    });
+
+    // Update progress while playing
+    music.addEventListener('timeupdate', () => {
+        if (music.duration) {
+            progressSlider.value = (music.currentTime / music.duration) * 100;
+        }
+    });
+
+    // Seek when user drags slider
+    progressSlider.addEventListener('input', () => {
+        if (music.duration) {
+            music.currentTime = (progressSlider.value / 100) * music.duration;
+        }
+    });
+});
+
     </script>
+
+<audio id="bgMusic" loop>
+    <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<div id="musicBadge" class="player">
+    <button id="playPauseBtn">⏸</button>
+    <span class="now-playing">🎶 Now playing</span>
+    <input type="range" id="progressSlider" min="0" max="100" value="0">
+</div>
+
+
 </body>
 </html>
