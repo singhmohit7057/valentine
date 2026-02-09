@@ -1,15 +1,33 @@
 <!DOCTYPE html>
+<!--
+Main HTML structure:
+This page is a single-scroll interactive Valentine experience.
+Each section reveals progressively after user interaction.
+-->
+
 <html lang="en">
 <head>
+
+<!--
+Developer Log:
+Spent 3 hours aligning buttons.
+Spent 10 minutes coding.
+Spent the rest overthinking feelings.
+-->
+
+<!-- Made with ❤️ by Mohit, crafted especially for You. If you're reading this… yes, it's that serious. -->
+
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Be My Valentine? 💕</title>
+
 <!-- WhatsApp / Social Preview -->
 <meta property="og:title" content="Will You Be My Valentine? 💕">
 <meta property="og:description" content="I made something special just for you ❤️">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://singhmohit7057.github.io/valentine/">
-<meta property="og:image" content="https://singhmohit7057.github.io/valentine/Pic1.jpeg">
+<meta property="og:image" content="https://singhmohit7057.github.io/valentine/Pic0.jpeg">
 <meta name="twitter:card" content="summary_large_image">
 
     <link href="https://fonts.googleapis.com/css2?family=Righteous&family=DM+Sans:wght@400;500;700&family=Fredoka:wght@400;600&display=swap" rel="stylesheet">
@@ -586,10 +604,24 @@ body.lock-scroll {
             font-size: 1.1rem;
         }
 
-        footer span {
-            display: inline-block;
-            animation: pulse 1.5s ease-in-out infinite;
-        }
+#secretHeart {
+    display: inline-block;
+    animation: pulse 1.5s ease-in-out infinite;
+    cursor: pointer;
+}      
+
+#heartHint {
+    font-size: 0.75rem;
+    opacity: 0.6;
+    margin-top: 4px;
+    animation: hintPulse 2.5s ease-in-out infinite;
+}
+
+@keyframes hintPulse {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.8; }
+}
+
 
         /* Responsive adjustments */
         @media (max-width: 768px) {
@@ -663,12 +695,36 @@ body.lock-scroll {
     cursor: pointer;
 }
 
+#themeToggle {
+  position: fixed;
+  bottom: 18px;
+  left: 18px;
+  background: white;
+  border: none;
+  border-radius: 50%;
+  width: 42px;
+  height: 42px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+  z-index: 9999;
+}
+
+body.night {
+  --beige: #1f1b24;
+  --soft-pink: #2a1e2e;
+  --text: #f5eaea;
+}
+
+
     </style>
 </head>
 <body>
     <!-- Floating hearts background -->
+<!-- Background layer: floating animated hearts (purely decorative) -->
     <div class="bg-hearts" id="bgHearts"></div>
 
+<!-- Decorative floating emojis for playful atmosphere -->
     <!-- Cute doodles -->
     <div class="doodle doodle-1">💕</div>
     <div class="doodle doodle-2">✨</div>
@@ -678,7 +734,10 @@ body.lock-scroll {
     <div class="doodle doodle-6">🦋</div>
 
     <div class="container">
-        <!-- Hero Section -->
+<!-- HERO SECTION
+Intro headline + playful YES/NO interaction NO button runs away, YES button grows
+-->
+
         <section class="hero">
             <h1>Will You Be My Valentine? 💕</h1>
             <p>Hey Shristi! I have something important to ask you...</p>
@@ -691,11 +750,23 @@ body.lock-scroll {
         </section>
 
         <!-- Success Section (Hidden initially) -->
+<!-- SUCCESS SECTION
+Hidden initially
+Shown only after YES is clicked
+Triggers confetti + unlocks rest of the page
+-->
+
         <section class="success-section" id="successSection">
             <h2>🎉 Yaaay! You said YES! 🎉</h2>
             <p>I'm so happy right now! 😊 You've made my day absolutely perfect!</p>
             <p>Now let me share all the special things I have planned for us... 💕</p>
         </section>
+
+
+<!-- LOVE LETTER
+Envelope opens on click to reveal heartfelt message
+Pure CSS + class toggle animation
+-->
 
         <!-- Love Letter Section -->
         <section class="love-letter">
@@ -723,6 +794,13 @@ body.lock-scroll {
             </div>
         </section>
 
+
+<!-- PHOTO GALLERY
+Each card reveals image + caption on click
+Includes sparkle effect for emotional emphasis
+-->
+
+
         <!-- Photo Gallery Section -->
         <section class="photo-section">
             <h2 class="section-title">Our Special Moments 📸</h2>
@@ -732,7 +810,7 @@ body.lock-scroll {
 
             <div class="photo-grid">
                 <div class="photo-card" onclick="revealPhoto(this)">
-                    <div class="photo-placeholder">🎭</div>
+                    <div class="photo-placeholder">💕</div>
                     <div class="photo-content">
                         <img src="Pic1.jpeg" alt="Memory 1">
                         <div class="photo-caption">
@@ -742,7 +820,7 @@ body.lock-scroll {
                 </div>
 
                 <div class="photo-card" onclick="revealPhoto(this)">
-                    <div class="photo-placeholder">🎨</div>
+                    <div class="photo-placeholder">🏀</div>
                     <div class="photo-content">
                         <img src="Pic2.jpeg" alt="Memory 2">
                         <div class="photo-caption">
@@ -752,7 +830,7 @@ body.lock-scroll {
                 </div>
 
                 <div class="photo-card" onclick="revealPhoto(this)">
-                    <div class="photo-placeholder">🌟</div>
+                    <div class="photo-placeholder">🏆</div>
                     <div class="photo-content">
                         <img src="Pic3.jpeg" alt="Memory 3">
                         <div class="photo-caption">
@@ -762,17 +840,17 @@ body.lock-scroll {
                 </div>
 
 		<div class="photo-card" onclick="revealPhoto(this)">
-                    <div class="photo-placeholder">🎨</div>
+                    <div class="photo-placeholder">🎈</div>
                     <div class="photo-content">
                         <img src="Pic4.jpeg" alt="Memory 4">
                         <div class="photo-caption">
-                            When you madr my Birthday Special.
+                            When you made my Birthday Special.
                         </div>
                     </div>
                 </div>
 
                 <div class="photo-card" onclick="revealPhoto(this)">
-                    <div class="photo-placeholder">🌟</div>
+                    <div class="photo-placeholder">💘</div>
                     <div class="photo-content">
                         <img src="Pic5.jpeg" alt="Memory 5">
                         <div class="photo-caption">
@@ -782,7 +860,7 @@ body.lock-scroll {
                 </div>
 
                 <div class="photo-card" onclick="revealPhoto(this)">
-                    <div class="photo-placeholder">💫</div>
+                    <div class="photo-placeholder">👩🏻‍❤️‍👨🏻</div>
                     <div class="photo-content">
                         <img src="Pic6.jpeg" alt="Memory 6">
                         <div class="photo-caption">
@@ -793,7 +871,15 @@ body.lock-scroll {
             </div>
         </section>
 
+
         <!-- Date Plans Section -->
+
+<!-- DATE IDEAS
+Static content with subtle hover/click feedback
+Represents future plans together
+-->
+
+
         <section class="date-plans">
             <h2 class="section-title">Our Valentine's Date Ideas 🌹</h2>
             <p style="text-align: center; margin-bottom: 20px; font-size: 1.1rem; color: var(--text);">
@@ -828,7 +914,15 @@ body.lock-scroll {
             </div>
         </section>
 
-        <!-- Easter Egg Surprises Section -->
+
+        <!-- Special Message Section -->
+
+<!-- SURPRISE MESSAGES
+Accordion-style reveal messages
+Each button toggles its own hidden text
+-->
+
+
         <section class="surprises">
             <h2 class="section-title">Special Messages For You 💌</h2>
             <p style="text-align: center; margin-bottom: 30px; font-size: 1.1rem; color: var(--text);">
@@ -839,48 +933,63 @@ body.lock-scroll {
                 <div>
                     <button class="surprise-btn" onclick="toggleSurprise(1)">Surprise #1 💝</button>
                     <div class="surprise-message" id="surprise1">
-                        You know what I love most about you? The way you make me smile even on the toughest days. Your positive energy is contagious!
+                       I don’t know when it happened, but you quietly became my safe place. No matter how my day goes, thinking of you makes everything feel lighter.
                     </div>
                 </div>
 
                 <div>
                     <button class="surprise-btn" onclick="toggleSurprise(2)">Surprise #2 ✨</button>
                     <div class="surprise-message" id="surprise2">
-                        Every time I see your name pop up on my phone, my heart skips a beat. You have no idea how much you brighten my day!
+                       Even on the days you’re angry, quiet, or distant, my feelings don’t change. I choose you in every mood, every version, every day.
                     </div>
                 </div>
 
                 <div>
                     <button class="surprise-btn" onclick="toggleSurprise(3)">Surprise #3 🌟</button>
                     <div class="surprise-message" id="surprise3">
-                        I appreciate all the little things you do - the way you remember my favorite things, your thoughtful gestures, and how you always know how to make me laugh.
+                       You don’t even realize how much you mean to me. Your smile calms me, your presence heals me, and your existence makes my life warmer.
                     </div>
                 </div>
 
                 <div>
                     <button class="surprise-btn" onclick="toggleSurprise(4)">Surprise #4 💕</button>
                     <div class="surprise-message" id="surprise4">
-                        Being with you feels like home. Comfortable, safe, and filled with warmth. Thank you for being you!
+                        I may not say it every time, but I notice everything your care, your efforts, your emotions. And I appreciate you more than you’ll ever know.
                     </div>
                 </div>
 
                 <div>
                     <button class="surprise-btn" onclick="toggleSurprise(5)">Surprise #5 🎈</button>
                     <div class="surprise-message" id="surprise5">
-                        I'm so grateful for every moment we spend together. You've made my life infinitely better just by being in it.
+                      If loving you means standing by you on your hardest days, then I’m ready. Because you’re worth every emotion, every effort, every heartbeat.
                     </div>
                 </div>
 
                 <div>
                     <button class="surprise-btn" onclick="toggleSurprise(6)">Surprise #6 💭</button>
                     <div class="surprise-message" id="surprise6">
-                        Looking forward to making many more beautiful memories with you. Here's to our future together! 🥂
+                       Sometimes I imagine the future, and in every version of it, you’re there arguing with me, laughing with me, growing with me. And that feels right.
                     </div>
                 </div>
             </div>
         </section>
 
+
+<!--
+WARNING:
+If you are reading this, you are officially too curious for your own good.
+Also… hi 👋
+-->
+
+
         <!-- Final Question -->
+
+<!-- FINAL QUESTION
+Last playful interaction before ending
+Second NO button runs away and forces the happy outcome 😌
+-->
+
+
         <section class="final-question">
             <h2>So... are you ready for the best Valentine's Day ever? 💖</h2>
             <p style="font-size: 1.2rem; margin: 20px 0;">One last question before we celebrate...</p>
@@ -896,20 +1005,48 @@ body.lock-scroll {
         </section>
 
         <!-- Footer -->
+
+
+
+<!-- 
+P.S. The heart below hides a secret. Some things need more than one tap 😉 
+-->
+
+
+
+<!--
+BUG #143:
+Heart reacts abnormally after multiple taps.
+Decision: not fixing. Some things are meant to overflow ❤️
+-->
+
+
+<!-- FOOTER
+Contains signature, hidden Easter egg heart, and subtle hint
+-->
+
+
         <footer>
             Made with love by<br>
-            Fattu <span>❤️</span>
+            Fattu 
+          <span id="secretHeart" title="Try tapping me 😉">❤️</span>
+            <div id="heartHint">psst… 👀</div>
             <br><br>
             <small>P.S. You're the best thing that's ever happened to me! 😊</small>
         </footer>
     </div>
 
     <script>
-// 🔒 Lock scroll on page load
-document.body.classList.add('lock-scroll');
+
+
+/*
+  Dear curious soul,
+  This page was built with love, patience, and way too many heart emojis.
+  Please proceed with a smile 💕
+*/
+
 
 let music, playPauseBtn;
-
 
         // Floating hearts background
         function createFloatingHearts() {
@@ -928,8 +1065,6 @@ let music, playPauseBtn;
                 setTimeout(() => heart.remove(), 17000);
             }, 3000);
         }
-
-        createFloatingHearts();
 
         // NO button runs away and YES button grows
         const noBtn = document.getElementById('noBtn');
@@ -986,11 +1121,12 @@ let music, playPauseBtn;
 
 const badge = document.getElementById('musicBadge');
 
-    
+if (music) {  
   music.play().then(() => {
     badge.classList.add('show');
     playPauseBtn.textContent = '⏸';
 }).catch(() => {});
+}
 
     // 🔓 Unlock scrolling
     document.body.classList.remove('lock-scroll');
@@ -1016,7 +1152,6 @@ const badge = document.getElementById('musicBadge');
         // Confetti animation
         function createConfetti() {
             const colors = ['#FFB3D9', '#FF8FAB', '#FF6B9D', '#FFE5F1', '#FFD700', '#FFA500'];
-            const shapes = ['circle', 'square'];
             
             for (let i = 0; i < 150; i++) {
                 setTimeout(() => {
@@ -1024,7 +1159,7 @@ const badge = document.getElementById('musicBadge');
                     confetti.className = 'confetti';
                     confetti.style.left = Math.random() * 100 + '%';
                     confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
-                    confetti.style.borderRadius = shapes[Math.floor(Math.random() * shapes.length)] === 'circle' ? '50%' : '0';
+                    confetti.style.borderRadius = '50%' ;
                     confetti.style.animationDelay = Math.random() * 0.5 + 's';
                     confetti.style.width = (Math.random() * 10 + 5) + 'px';
                     confetti.style.height = (Math.random() * 10 + 5) + 'px';
@@ -1075,49 +1210,41 @@ const badge = document.getElementById('musicBadge');
         }
 
         // Second NO button (after saying YES) - with consequences!
-        const noBtn2 = document.getElementById('noBtn2');
-        let noBtn2Attempts = 0;
+       const noBtn2 = document.getElementById('noBtn2');
+let noBtn2Attempts = 0;
 
-        noBtn2.addEventListener('mouseenter', () => {
-            noBtn2Attempts++;
-            
-            // Make button run away
-            const parent = noBtn2.parentElement;
-            const parentRect = parent.getBoundingClientRect();
-            
-            const randomX = Math.random() * (parentRect.width - noBtn2.offsetWidth);
-            const randomY = Math.random() * 100 - 50; // Move vertically too
-            
-            noBtn2.style.left = randomX + 'px';
-            noBtn2.style.top = randomY + 'px';
-            noBtn2.style.transform = `scale(${Math.max(0.5, 1 - noBtn2Attempts * 0.1)}) rotate(${Math.random() * 360}deg)`;
-            
-            // After 3 attempts, show the consequence message
-            if (noBtn2Attempts >= 3) {
-                noBtn2.style.display = 'none';
-                document.getElementById('consequenceMsg').style.display = 'block';
-                document.getElementById('consequenceMsg').style.animation = 'bounceIn 0.6s ease-out';
-                
-                // Create celebration confetti
-                createConfetti();
-            }
-        });
+noBtn2.addEventListener('mouseenter', () => {
+    noBtn2Attempts++;
 
-        noBtn2.addEventListener('click', () => {
-            // If they somehow manage to click it
-            noBtn2.style.display = 'none';
-            document.getElementById('consequenceMsg').style.display = 'block';
-            document.getElementById('consequenceMsg').style.animation = 'bounceIn 0.6s ease-out';
-            createConfetti();
-        });
+    const parent = noBtn2.parentElement;
+    const parentRect = parent.getBoundingClientRect();
 
-        // Show consequence directly when clicking yes
-        function showConsequence() {
-            document.getElementById('noBtn2').style.display = 'none';
-            document.getElementById('consequenceMsg').style.display = 'block';
-            document.getElementById('consequenceMsg').style.animation = 'bounceIn 0.6s ease-out';
-            createConfetti();
-        }
+    const randomX = Math.random() * (parentRect.width - noBtn2.offsetWidth);
+    const randomY = Math.random() * 100 - 50;
+
+    noBtn2.style.left = randomX + 'px';
+    noBtn2.style.top = randomY + 'px';
+    noBtn2.style.transform =
+        `scale(${Math.max(0.5, 1 - noBtn2Attempts * 0.1)}) rotate(${Math.random() * 360}deg)`;
+
+    if (noBtn2Attempts >= 3) {
+        showConsequence();
+    }
+});
+
+noBtn2.addEventListener('click', showConsequence);
+            
+
+function showConsequence() {
+    document.getElementById('noBtn2').style.display = 'none';
+
+    const msg = document.getElementById('consequenceMsg');
+    msg.style.display = 'block';
+    msg.style.animation = 'bounceIn 0.6s ease-out';
+
+      //  createConfetti();
+}
+      
 
         // Add hover effects to date items
         const dateItems = document.querySelectorAll('.date-item');
@@ -1133,14 +1260,20 @@ const badge = document.getElementById('musicBadge');
         });
 
 document.addEventListener('DOMContentLoaded', () => {
+    // 🔒 Lock scroll
+    document.body.classList.add('lock-scroll');
+    createFloatingHearts();
+
+    // 🎵 MUSIC SETUP
     music = document.getElementById('bgMusic');
-    music.volume = 0.25;
     playPauseBtn = document.getElementById('playPauseBtn');
     const progressSlider = document.getElementById('progressSlider');
 
     if (!music || !playPauseBtn || !progressSlider) return;
 
-    // Play / Pause
+    music.volume = 0.25;
+
+    // ▶️ PLAY / PAUSE
     playPauseBtn.addEventListener('click', () => {
         if (music.paused) {
             music.play();
@@ -1151,19 +1284,64 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Update progress while playing
+    // ⏱️ UPDATE SLIDER
     music.addEventListener('timeupdate', () => {
         if (music.duration) {
             progressSlider.value = (music.currentTime / music.duration) * 100;
         }
     });
 
-    // Seek when user drags slider
+    // 🎚️ SEEK
     progressSlider.addEventListener('input', () => {
         if (music.duration) {
             music.currentTime = (progressSlider.value / 100) * music.duration;
         }
     });
+
+    // 🌙 DAY / NIGHT TOGGLE
+    const toggle = document.getElementById('themeToggle');
+    if (toggle) {
+        toggle.addEventListener('click', () => {
+            document.body.classList.toggle('night');
+            toggle.textContent =
+                document.body.classList.contains('night') ? '☀️' : '🌙';
+        });
+    }
+
+ // 🐣 SECRET EASTER EGG
+let heartTaps = 0;
+const heart = document.getElementById('secretHeart');
+
+if (heart) {
+    heart.addEventListener('click', () => {
+        heartTaps++;
+      
+       if (heartTaps === 1) {
+         heart.style.transform = "scale(1.15)";
+         heart.style.transition = "transform 0.2s ease";
+       }
+
+
+        if (heartTaps === 3) {
+            // visual reward
+            heart.innerText = "💘";
+            heart.style.transform = "scale(1.5)";
+
+            // popup message (optional)
+            setTimeout(() => {
+                      alert("You found the secret 😌\nYou officially own my heart forever 💘");
+             }, 300);
+
+            const hint = document.getElementById('heartHint');
+            if (hint) hint.style.display = 'none';
+
+            // lock so it triggers only once
+            heartTaps = -999;
+        }
+    });
+}
+
+
 });
 
     </script>
@@ -1171,6 +1349,8 @@ document.addEventListener('DOMContentLoaded', () => {
 <audio id="bgMusic" loop>
     <source src="music.mp3" type="audio/mpeg">
 </audio>
+
+<button id="themeToggle">🌙</button>
 
 <div id="musicBadge" class="player">
     <button id="playPauseBtn">⏸</button>
@@ -1180,4 +1360,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 </body>
+
+
+
+<!-- 
+End of file. End of doubts. Beginning of us. 💖 
+-->
+
+
+
 </html>
