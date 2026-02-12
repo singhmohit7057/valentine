@@ -7,6 +7,8 @@ Each section reveals progressively after user interaction.
 
 <html lang="en">
   <head>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet" />
+
     <!--
     Developer Log:
     Spent 3 hours aligning buttons.
@@ -159,6 +161,150 @@ Each section reveals progressively after user interaction.
         padding: 20px;
         position: relative;
         z-index: 2;
+      }
+
+      .vault-screen {
+        position: fixed;
+        inset: 0;
+        background: linear-gradient(135deg, var(--soft-pink), var(--beige));
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 99999;
+      }
+
+      .vault-card {
+        background: white;
+        padding: 40px 30px;
+        border-radius: 25px;
+        width: 320px;
+        text-align: center;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+      }
+
+      .vault-card p {
+        margin-top: 6px;
+      }
+
+      .vault-icon {
+        color: var(--soft-red);
+        margin-bottom: 10px;
+      }
+
+      .vault-title {
+        font-family: "Great Vibes", cursive;
+        font-size: 2.2rem;
+        color: var(--soft-red);
+        margin-top: 10px;
+      }
+
+      #vaultInput {
+        width: 100%;
+        padding: 12px;
+        border-radius: 10px;
+        border: 2px solid var(--soft-red);
+        margin: 20px 0;
+        text-align: center;
+        font-size: 1.2rem;
+      }
+
+      .vault-keypad {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+      }
+
+      .vault-keypad button,
+      .vault-keypad a {
+        padding: 18px;
+        border-radius: 50%;
+        font-size: 1.2rem;
+        cursor: pointer;
+        text-align: center;
+        border: none;
+      }
+
+      /* Normal number buttons */
+      .vault-keypad button {
+        background: var(--soft-pink);
+      }
+
+      /* Call button (no pink background) */
+      .vault-call {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        background: transparent;
+        font-size: 1.4rem;
+      }
+
+      /* Clear button (no pink background) */
+      .vault-clear {
+        background: transparent;
+        font-size: 1.2rem;
+      }
+
+      .unlock-btn {
+        margin-top: 10px;
+        width: 100%;
+        padding: 12px;
+        border-radius: 20px;
+        border: none;
+        background: linear-gradient(135deg, var(--soft-red), var(--coral));
+        color: white;
+        font-weight: 600;
+        cursor: pointer;
+      }
+
+      .vault-input-wrapper {
+        position: relative;
+        width: 100%;
+      }
+
+      #vaultInput {
+        width: 100%;
+        padding: 18px;
+        padding-right: 50px;
+        font-size: 1.2rem;
+        text-align: center;
+        border-radius: 12px;
+        border: 2px solid #f3c7cf;
+        background: #fbe9ee;
+        outline: none;
+      }
+
+      #toggleVaultView {
+        position: absolute;
+        right: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+        border: none;
+        background: transparent;
+        font-size: 1.2rem;
+        cursor: pointer;
+      }
+
+      @keyframes shake {
+        0% {
+          transform: translateX(0);
+        }
+        25% {
+          transform: translateX(-6px);
+        }
+        50% {
+          transform: translateX(6px);
+        }
+        75% {
+          transform: translateX(-6px);
+        }
+        100% {
+          transform: translateX(0);
+        }
+      }
+
+      .vault-card.shake {
+        animation: shake 0.4s ease;
       }
 
       /* Hero Section */
@@ -634,6 +780,110 @@ Each section reveals progressively after user interaction.
         }
       }
 
+      /* Shower */
+      .cute-love-btn {
+        background: linear-gradient(135deg, #ff6b9d, #ff8fab);
+        color: white;
+        padding: 14px 36px;
+        border: none;
+        border-radius: 50px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        cursor: pointer;
+        box-shadow: 0 8px 20px rgba(255, 107, 157, 0.3);
+        transition: all 0.3s ease;
+      }
+
+      .cute-love-btn:hover {
+        transform: scale(1.07);
+        box-shadow: 0 10px 25px rgba(255, 107, 157, 0.4);
+      }
+
+      .cute-love-btn:active {
+        transform: scale(0.95);
+      }
+
+      /* Sparkle style */
+      .sparkle {
+        position: fixed;
+        pointer-events: none;
+        font-size: 18px;
+        animation: sparkle-burst 1s ease-out forwards;
+        z-index: 9999;
+      }
+
+      @keyframes sparkle-burst {
+        0% {
+          opacity: 1;
+          transform: scale(1) translateY(0);
+        }
+        100% {
+          opacity: 0;
+          transform: scale(1.8) translateY(-40px);
+        }
+      }
+
+      /* WHY I LOVE YOU */
+      .why-love {
+        text-align: center;
+        margin: 80px 0 40px;
+      }
+
+      .why-title {
+        font-family: "Great Vibes", cursive;
+        font-size: 3rem;
+        margin-bottom: 10px;
+      }
+
+      .why-sub {
+        font-size: 1.1rem;
+        opacity: 0.8;
+        margin-bottom: 25px;
+      }
+
+      .why-box {
+        max-width: 650px;
+        margin: 30px auto 0;
+        background: white;
+        padding: 30px;
+        border-radius: 18px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+        font-size: 1.2rem;
+        line-height: 1.7;
+        display: none;
+        animation: fadeIn 0.5s ease;
+      }
+
+      .why-counter {
+        font-weight: 600;
+        color: var(--soft-red);
+        margin-bottom: 10px;
+      }
+
+      /* Floating burst hearts */
+      .pop-heart {
+        position: fixed;
+        font-size: 20px;
+        pointer-events: none;
+        animation: popFloat 1.8s ease-out forwards;
+        z-index: 9999;
+      }
+
+      @keyframes popFloat {
+        0% {
+          opacity: 0;
+          transform: scale(0.5) translateY(0);
+        }
+        20% {
+          opacity: 1;
+          transform: scale(1.2);
+        }
+        100% {
+          opacity: 0;
+          transform: scale(1) translateY(-80px);
+        }
+      }
+
       /* Footer */
       footer {
         text-align: center;
@@ -797,6 +1047,65 @@ Each section reveals progressively after user interaction.
     </style>
   </head>
   <body>
+    <!-- VAULT SCREEN -->
+    <div id="vaultScreen" class="vault-screen">
+      <div class="vault-card">
+        <div class="vault-icon">
+          <svg
+            viewBox="0 0 24 24"
+            width="48"
+            height="48"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <rect x="3" y="11" width="18" height="11" rx="2"></rect>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+          </svg>
+        </div>
+
+        <h2 class="vault-title">The Vault</h2>
+        <p>Enter our secret date</p>
+        <p>(🤫Someone Birthday)</p>
+
+        <div class="vault-input-wrapper">
+          <input
+            type="password"
+            id="vaultInput"
+            placeholder="DDMMYYYY"
+            maxlength="8"
+            inputmode="numeric"
+            autocomplete="off"
+          />
+          <button id="toggleVaultView" type="button">🙈</button>
+        </div>
+
+        <div class="vault-keypad">
+          <!-- Numbers -->
+          <button onclick="addDigit(1)">1</button>
+          <button onclick="addDigit(2)">2</button>
+          <button onclick="addDigit(3)">3</button>
+          <button onclick="addDigit(4)">4</button>
+          <button onclick="addDigit(5)">5</button>
+          <button onclick="addDigit(6)">6</button>
+          <button onclick="addDigit(7)">7</button>
+          <button onclick="addDigit(8)">8</button>
+          <button onclick="addDigit(9)">9</button>
+
+          <!-- 📞 Call Button -->
+          <a href="tel:+918697505325" class="vault-call">📞</a>
+
+          <button onclick="addDigit(0)">0</button>
+
+          <!-- ⌫ Right Side -->
+          <button class="vault-clear" onclick="clearDigit()">⌫</button>
+        </div>
+
+        <button class="unlock-btn" onclick="unlockVault()">Unlock</button>
+      </div>
+    </div>
 
     <!-- Floating hearts background -->
     <!-- Background layer: floating animated hearts (purely decorative) -->
@@ -827,6 +1136,11 @@ Each section reveals progressively after user interaction.
         </div>
       </section>
 
+      <!-- SHOWER ME LOVE -->
+      <div style="text-align: center; margin: 60px 0 30px">
+        <button id="loveSparkleBtn" class="cute-love-btn">💖 Shower me with Love</button>
+      </div>
+
       <!-- Success Section (Hidden initially) -->
 
       <!-- SUCCESS SECTION
@@ -841,7 +1155,7 @@ Each section reveals progressively after user interaction.
         <p>Now let me share all the special things I have planned for us... 💕</p>
       </section>
 
-    <!-- LOVE LETTER
+      <!-- LOVE LETTER
     Envelope opens on click to reveal heartfelt message
     Pure CSS + class toggle animation
     -->
@@ -875,7 +1189,7 @@ Each section reveals progressively after user interaction.
         </div>
       </section>
 
-    <!-- PHOTO GALLERY
+      <!-- PHOTO GALLERY
     Each card reveals image + caption on click
     Includes sparkle effect for emotional emphasis
     -->
@@ -940,7 +1254,7 @@ Each section reveals progressively after user interaction.
 
       <!-- Date Plans Section -->
 
-    <!-- DATE IDEAS
+      <!-- DATE IDEAS
     Static content with subtle hover/click feedback
     Represents future plans together
     -->
@@ -987,7 +1301,7 @@ Each section reveals progressively after user interaction.
 
       <!-- Special Message Section -->
 
-    <!-- SURPRISE MESSAGES
+      <!-- SURPRISE MESSAGES
     Accordion-style reveal messages
     Each button toggles its own hidden text
     -->
@@ -1049,7 +1363,7 @@ Each section reveals progressively after user interaction.
         </div>
       </section>
 
-    <!--
+      <!--
     WARNING:
     If you are reading this, you are officially too curious for your own good.
     Also… hi 👋
@@ -1057,7 +1371,7 @@ Each section reveals progressively after user interaction.
 
       <!-- Final Question -->
 
-    <!-- FINAL QUESTION
+      <!-- FINAL QUESTION
     Last playful interaction before ending
     Second NO button runs away and forces the happy outcome 😌
     -->
@@ -1076,19 +1390,32 @@ Each section reveals progressively after user interaction.
         </div>
       </section>
 
+      <!-- WHY I LOVE YOU SECTION -->
+      <section class="why-love">
+        <h2 class="why-title">Why I Love You ❤️</h2>
+        <p class="why-sub">Click below to find out…</p>
+
+        <button id="whyLoveBtn" class="cute-love-btn">💘 Click to Feel Loved</button>
+
+        <div id="whyLoveBox" class="why-box">
+          <div id="whyCounter" class="why-counter"></div>
+          <div id="whyText"></div>
+        </div>
+      </section>
+
       <!-- Footer -->
 
-    <!-- 
+      <!-- 
     P.S. The heart below hides a secret. Some things need more than one tap 😉 
     -->
 
-    <!--
+      <!--
     BUG #143:
     Heart reacts abnormally after multiple taps.
     Decision: not fixing. Some things are meant to overflow ❤️
     -->
 
-    <!-- FOOTER
+      <!-- FOOTER
     Contains signature, hidden Easter egg heart, and subtle hint
     -->
 
@@ -1103,13 +1430,11 @@ Each section reveals progressively after user interaction.
     </div>
 
     <script>
-
-    /*
+      /*
         Dear curious soul,
         This page was built with love, patience, and way too many heart emojis.
         Please proceed with a smile 💕
     */
-
 
       let music, playPauseBtn;
 
@@ -1190,7 +1515,7 @@ Each section reveals progressively after user interaction.
             .play()
             .then(() => {
               badge.classList.add("show");
-              playPauseBtn.textContent = "⏸";
+              playPauseBtn.textContent = "||";
             })
             .catch(() => {});
         }
@@ -1268,6 +1593,61 @@ Each section reveals progressively after user interaction.
             }, i * 50);
           }
         }
+      }
+
+      // 💖 LOVE BURST
+      const sparkleBtn = document.getElementById("loveSparkleBtn");
+
+      if (sparkleBtn) {
+        sparkleBtn.addEventListener("click", () => {
+          const hearts = ["💖", "💕", "💗", "💘", "❤️"];
+
+          for (let i = 0; i < 30; i++) {
+            const heart = document.createElement("div");
+            heart.className = "pop-heart";
+            heart.innerText = hearts[Math.floor(Math.random() * hearts.length)];
+
+            // Random position anywhere on screen
+            heart.style.left = Math.random() * window.innerWidth + "px";
+            heart.style.top = Math.random() * window.innerHeight + "px";
+
+            // Random size
+            heart.style.fontSize = Math.random() * 20 + 16 + "px";
+
+            document.body.appendChild(heart);
+
+            setTimeout(() => heart.remove(), 1800);
+          }
+        });
+      }
+
+      // ❤️ WHY I LOVE YOU SECTION
+      const whyBtn = document.getElementById("whyLoveBtn");
+      const whyBox = document.getElementById("whyLoveBox");
+      const whyText = document.getElementById("whyText");
+      const whyCounter = document.getElementById("whyCounter");
+
+      const loveReasons = [
+        "I love you because you understand me even when I don’t explain properly.",
+        "I love you for the way you support me, calm me, and stand by me no matter what.",
+        "I love you because with you, even ordinary moments feel magical.",
+      ];
+
+      let loveIndex = 0;
+
+      if (whyBtn) {
+        whyBtn.addEventListener("click", () => {
+          if (loveIndex < loveReasons.length) {
+            whyBox.style.display = "block";
+            whyCounter.textContent = loveIndex + 1 + "/3";
+            whyText.textContent = loveReasons[loveIndex];
+            loveIndex++;
+          } else {
+            loveIndex = 0;
+            whyCounter.textContent = "Again? 😉";
+            whyText.textContent = "You just wanted to hear it one more time, didn’t you?";
+          }
+        });
       }
 
       // Easter egg surprises
@@ -1381,6 +1761,30 @@ Each section reveals progressively after user interaction.
           });
         }
 
+        // Vault Keyboard
+        const vaultInput = document.getElementById("vaultInput");
+
+        if (vaultInput) {
+          vaultInput.addEventListener("input", () => {
+            vaultInput.value = vaultInput.value.replace(/\D/g, "");
+
+            if (vaultInput.value.length === 8) {
+              unlockVault();
+            }
+          });
+        }
+
+        // Add 👁 Show / Hide Password
+        const toggleVaultView = document.getElementById("toggleVaultView");
+
+        if (toggleVaultView && vaultInput) {
+          toggleVaultView.addEventListener("click", () => {
+            const isHidden = vaultInput.type === "password";
+            vaultInput.type = isHidden ? "text" : "password";
+            toggleVaultView.textContent = isHidden ? "👁" : "🙈";
+          });
+        }
+
         // 🐣 SECRET EASTER EGG
         let heartTaps = 0;
         const heart = document.getElementById("secretHeart");
@@ -1413,6 +1817,42 @@ Each section reveals progressively after user interaction.
           });
         }
       });
+
+      function addDigit(num) {
+        const input = document.getElementById("vaultInput");
+        if (input.value.length < 8) {
+          input.value += num;
+        }
+      }
+
+      function clearDigit() {
+        const input = document.getElementById("vaultInput");
+        input.value = input.value.slice(0, -1);
+      }
+
+      function unlockVault() {
+        const correct = "01112003";
+        const input = document.getElementById("vaultInput");
+        const entered = input.value;
+
+        if (entered === correct) {
+          document.getElementById("vaultScreen").style.opacity = "0";
+          setTimeout(() => {
+            document.getElementById("vaultScreen").style.display = "none";
+          }, 500);
+        } else {
+          input.style.borderColor = "red";
+          input.value = "";
+
+          const card = document.querySelector(".vault-card");
+          card.classList.add("shake");
+
+          setTimeout(() => {
+            card.classList.remove("shake");
+            input.style.borderColor = "#f3c7cf";
+          }, 500);
+        }
+      }
     </script>
 
     <audio id="bgMusic" loop>
@@ -1440,6 +1880,4 @@ Each section reveals progressively after user interaction.
 
   <!-- 
 End of file. End of doubts. Beginning of us. 💖 
--->
-
-</html>
+--></html>
